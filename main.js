@@ -1,13 +1,17 @@
 
-const discipline1El = document.querySelector('.discipline-1')
-const accordion1El = document.querySelector('.accordion-1')
+const caseStudyActiveEl = document.querySelector('.case-study-active')
+const accordionActiveEl = document.querySelector('.accordion-active')
+const caseStudyArrow = document.querySelector('.fa-arrow-down')
 
 const burgerMenuBtn = document.querySelector('.burger-menu-button')
 const burgerMenuEl = document.querySelector('.nav')
 
-discipline1El.addEventListener('click', ()=>{
-    discipline1El.classList.toggle('active')
-    accordion1El.classList.toggle('visible')
+
+
+caseStudyActiveEl.addEventListener('click', ()=>{
+    caseStudyActiveEl.classList.toggle('active')
+    accordionActiveEl.classList.toggle('visible')
+    caseStudyArrow.classList.toggle('rotated')
 })
 
 burgerMenuBtn.addEventListener('click', ()=>{
@@ -16,5 +20,12 @@ burgerMenuBtn.addEventListener('click', ()=>{
         burgerMenuBtn.setAttribute('aria-expanded', 'false') 
     } else {
         burgerMenuBtn.setAttribute('aria-expanded', 'true') 
+    }
+})
+
+document.body.addEventListener('click', (e)=>{
+    if (e.target.id !== 'burgerSvg') {
+        burgerMenuEl.classList.remove('nav-toggled')
+        burgerMenuBtn.setAttribute('aria-expanded', 'false') 
     }
 })

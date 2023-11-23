@@ -12,6 +12,11 @@
   --nsd-blue: hsla(242, 44%, 35%, 1);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem
+}
+
 body {
   background-color: var(--white);
   display: flex;
@@ -49,7 +54,9 @@ header {
   background-color: transparent;
   border-radius: .4rem;
   border: none;
+  cursor: pointer;
 }
+
 
 .line {
   transition: 
@@ -57,21 +64,19 @@ header {
     rotate 300ms ease-in ,
     fill  0ms 300ms;
     transform-origin: center;
+    pointer-events: none;
 }
 
 .burger-menu-button[aria-expanded="true"] .line {
   transition: 
     y 300ms ease-in ,
     rotate 300ms ease-in 300ms,
-    fill  0ms 300ms;
-     
+    fill  0ms 300ms;  
 }
 
 .burger-menu-button[aria-expanded="true"] :is(.top, .bottom)  {
   y:45;
 } 
-
-
 
 .burger-menu-button[aria-expanded="true"] .middle {
  fill:transparent;
@@ -81,11 +86,9 @@ header {
   rotate: -45deg;
 } 
 
-
 .burger-menu-button[aria-expanded="true"] .top {
   rotate: 45deg;
 }
-
 
 .nav {
   transform: translateX(100%);
@@ -98,9 +101,10 @@ header {
   transition: all 250ms linear;
 }
 
-ul {
+.nav-list {
   width: 100%;
   background-color: var(--white);
+  box-shadow: 0px 15px 8px -3px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
@@ -108,7 +112,7 @@ ul {
   color: var(--dark-electric-blue);
 }
 
-li {
+.nav-item {
   margin: 0 1.5rem;
   height: 5.75rem;
   border-bottom: 1px solid var(--dark-electric-blue);
@@ -118,7 +122,7 @@ li {
   align-items: center;
 }
 
-li > a {
+.nav-item > a {
   text-decoration: none;
 }
 
@@ -168,13 +172,13 @@ section {
   line-height: 150%;
 }
 
-.disciplines-section-title {
-  color: var(--gunmetal);
+.section-title {
+  font-size: 1.75rem;
   margin: 1rem 0;
 }
 
-.disciplines-section-sub-title {
-  margin: 1rem 0;
+.section-sub-title {
+  margin: 0 0 1rem 0;
 }
 
 .card {
@@ -198,7 +202,16 @@ section {
   object-position: left;
 }
 
-.discipline-btn {
+.discipline-list {
+  margin: .5rem 0 1rem 0;
+}
+
+.discipline-list > li {
+  margin-left: 1.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.case-study-btn {
   color: var(--gunmetal);
   min-width: 20.4375rem;
   font-size: 1.2rem;
@@ -211,22 +224,15 @@ section {
   grid-area: button;
 }
 
-.discipline-btn::after {
-  content: "\02795";
-  float: right;
-  padding-right: 1rem;
-  font-size: 1rem;
-}
-
-.discipline-accordion {  
+.case-study-accordion {  
   max-height: 0px;
   text-align: center;
   overflow: hidden;
-  transition: max-height 500ms linear;
+  transition: max-height 300ms linear;
   grid-area: accordion;
 }
 
-.discipline-description {
+.case-study-description {
   display: inline-block;
   padding: 1rem 0;
   text-align: center;
@@ -249,12 +255,10 @@ section {
 
 .visible {
   max-height: 500px;
-  transition: max-height 500ms linear;
+  transition: max-height 300ms linear;
 }
 
-.active::after{
-  content: "\2796";
-}
+
 
 .footer{
   display: flex;
@@ -264,9 +268,19 @@ section {
   box-shadow: 0px -15px 8px -3px rgba(0,0,0,0.1);
 }
 
-.fa-solid, .fa-brands {
+.socials-icons {
   color: var(--nsd-blue);
   font-size: 2.5rem;
   margin: 1.5rem 0 0 1.5rem;
 }
+
+.fa-arrow-down {
+  font-size: 1.75rem;
+  margin-right: 1rem;
+  transition: 300ms;
+}
   
+.rotated {
+  transform: rotate(.5turn);
+  transition: 300ms;
+}
