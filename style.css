@@ -74,7 +74,11 @@ header {
     fill  0ms 300ms;  
 }
 
-.burger-menu-button[aria-expanded="true"] :is(.top, .bottom)  {
+.burger-menu-button[aria-expanded="true"] .top {
+  y:45;
+} 
+
+.burger-menu-button[aria-expanded="true"] .bottom {
   y:45;
 } 
 
@@ -124,6 +128,10 @@ header {
 
 .nav-item > a {
   text-decoration: none;
+}
+
+.nav-item > a:visited {
+  color:  var(--nsd-blue);
 }
 
 .nav-toggled {
